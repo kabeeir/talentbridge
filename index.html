@@ -1,0 +1,2447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talent Bridge | Global Talent Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff6b35;
+            --primary-dark: #e05a27;
+            --secondary: #333333;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --dark-gray: #495057;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--secondary);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles - Single Unified Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background: var(--primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, 
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-radius: var(--radius);
+            padding: 0.75rem 0;
+            z-index: 100;
+            margin-top: 5px;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.85rem 1.75rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            height: auto;
+            padding: 8px 0 8px 1.75rem;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255, 107, 53, 0.08);
+            color: var(--primary);
+            padding-left: 2rem;
+        }
+
+        .dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            height: 100%;
+            padding: 8px 0;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: 2rem;
+        }
+
+        .phone-number {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .phone-number i {
+            font-size: 1.3rem;
+        }
+
+        .cta-button-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.65rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            margin-left: 1rem;
+            height: 42px;
+            display: flex;
+            align-items: center;
+        }
+
+        .cta-button-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            cursor: pointer;
+        }
+
+        /* Page Content */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 90px;
+            padding-bottom: 80px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Hero Section with Parallax Background */
+        .hero {
+            height: 100vh;
+            min-height: 800px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background: linear-gradient(rgba(0, 15, 30, 0.85), rgba(0, 15, 30, 0.85)), url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+            background-attachment: fixed;
+            transform: translate3d(0, 0, 0);
+            will-change: transform;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 4.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .primary-cta {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 1.1rem 2.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .primary-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .secondary-cta {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 1rem 2.6rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.15rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .secondary-cta:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.8rem;
+            animation: bounce 2s infinite;
+            z-index: 3;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        .section-header {
+            position: relative;
+            margin-bottom: 3.5rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 750px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 8rem 0;
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid var(--light-gray);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-color: var(--primary);
+        }
+
+        .service-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.08);
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-icon {
+            width: 65px;
+            height: 65px;
+            background: rgba(255, 107, 53, 0.12);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .service-icon i {
+            font-size: 2.1rem;
+            color: var(--primary);
+        }
+
+        .service-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+        }
+
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 1.8rem;
+            line-height: 1.7;
+        }
+
+        /* Enhanced Service Button */
+        .service-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .service-button i {
+            margin-left: 8px;
+            transition: var(--transition);
+        }
+
+        .service-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .service-button:hover i {
+            transform: translateX(3px);
+        }
+
+        .service-button:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+            transform: scale(0);
+            transition: transform 0.5s ease;
+            z-index: 0;
+        }
+
+        .service-button:hover:after {
+            transform: scale(1);
+        }
+
+        .service-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Articles Section */
+        .articles-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #fffbf8 0%, #fef8f5 100%);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+        }
+
+        .article-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .article-card:hover .article-image img {
+            transform: scale(1.08);
+        }
+
+        .article-content {
+            padding: 1.8rem;
+        }
+
+        .article-date {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.9rem;
+            color: var(--secondary);
+            line-height: 1.3;
+        }
+
+        .article-content p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0,15,30,0.92), rgba(0,10,25,0.95)), url('https://images.unsplash.com/photo-1552664738-75a2aa3f8747?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+            background-attachment: fixed;
+            color: white;
+            border-radius: var(--radius);
+            margin: 0 auto;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .cta-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2.8rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        /* About Us Page Styles */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 40px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 30px;
+            bottom: -25px;
+            width: 2px;
+            background: var(--light-gray);
+        }
+
+        .timeline-item:last-child:after {
+            display: none;
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .about-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-weight: 500;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* Resources Page Styles */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: var(--primary);
+        }
+
+        .resource-icon {
+            width: 65px;
+            height: 65px;
+            background: rgba(255, 107, 53, 0.12);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .resource-icon i {
+            font-size: 2.1rem;
+            color: var(--primary);
+        }
+
+        .resource-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+        }
+
+        .resource-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .webinar-card {
+            background: linear-gradient(135deg, #fffbf8 0%, #fef8f5 100%);
+            text-align: center;
+            padding: 3rem;
+            border-radius: var(--radius);
+            margin-top: 2rem;
+        }
+
+        .webinar-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .webinar-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .webinar-card p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer {
+            background: var(--secondary);
+            color: white;
+            padding: 5rem 0 3rem;
+            margin-top: 6rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            font-size: 1.02rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+            padding-left: 5px;
+        }
+
+        .footer-contact {
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 1.2rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            color: var(--primary);
+            font-size: 1.3rem;
+            min-width: 28px;
+            margin-top: 4px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 1.05rem;
+        }
+
+        /* Parallax Effect */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .parallax-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 15, 30, 0.85);
+        }
+
+        .parallax-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            padding: 8rem 0;
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .slide-up {
+            animation: slideUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .contact-info {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .mobile-nav-active .nav-links {
+                display: flex;
+                flex-direction: column;
+                gap: 1.2rem;
+                position: absolute;
+                top: 75px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                padding: 2rem;
+                box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+                flex-wrap: wrap;
+                z-index: 999;
+            }
+            
+            .dropdown-content {
+                position: static;
+                display: none;
+                box-shadow: none;
+                background: transparent;
+                padding: 0;
+            }
+            
+            .dropdown:hover .dropdown-content,
+            .dropdown.active .dropdown-content {
+                display: block;
+                margin-left: 20px;
+                margin-top: 10px;
+            }
+            
+            .dropdown-content a {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 750px;
+            }
+            
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.3rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .primary-cta, .secondary-cta {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .about-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 650px;
+            }
+            
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            .cta-section h2 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-section p {
+                font-size: 1.1rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Single Unified Header with Phone Number -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo" onclick="showPage('home')">
+                    <div class="logo-icon">
+                        <i class="fas fa-bridge"></i>
+                    </div>
+                    Talent Bridge
+                </a>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-links" id="navLinks">
+                    <a href="#" onclick="showPage('home')">Home</a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-trigger">Services <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#" onclick="showPage('ecommerce')">eCommerce Solutions</a>
+                            <a href="#" onclick="showPage('marketing')">Marketing Support</a>
+                            <a href="#" onclick="showPage('hiring')">Hiring Support</a>
+                            <a href="#" onclick="showPage('leads')">Lead Generation</a>
+                        </div>
+                    </div>
+                    <a href="#" onclick="showPage('about')">About Us</a>
+                    <a href="#" onclick="showPage('resources')">Resources</a>
+                    <div class="contact-info">
+                        <a href="tel:+12792083677" class="phone-number">
+                            <i class="fas fa-phone-alt"></i>
+                            
+                            <span>(279) 208-3677</span>
+                        </a>
+                        <button class="cta-button-header" onclick="showPage('contact')">Get Started</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div class="page active" id="home-page">
+        <section class="hero">
+            <div class="parallax-bg"></div>
+            <div class="hero-content fade-in">
+                <h1>Connecting Talent with Global Opportunity</h1>
+                <p>Talent Bridge delivers personalized, technology-powered solutions for multinational companies seeking exceptional professionals and qualified leads.</p>
+                <div class="hero-cta">
+                    <button class="primary-cta" onclick="showPage('contact')">Schedule Consultation</button>
+                    <button class="secondary-cta" onclick="showPage('case-studies')">View Case Studies</button>
+                </div>
+            </div>
+            <div class="scroll-down" onclick="scrollToSection('services-section')">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <section class="services-section" id="services-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Our Services</h2>
+                    <p class="section-subtitle">Comprehensive talent and growth solutions designed for global enterprises seeking sustainable competitive advantage</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="eCommerce Solutions">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h3>eCommerce Solutions</h3>
+                            <p>End-to-end platform development, optimization, and management for global digital commerce operations.</p>
+                            <a href="#" class="service-button" onclick="showPage('ecommerce')">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1552664738-75a2aa3f8747?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Marketing Support">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <h3>Marketing Support</h3>
+                            <p>Strategic campaign development and execution across all digital channels to drive sustainable growth.</p>
+                            <a href="#" class="service-button" onclick="showPage('marketing')">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Hiring Support">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Hiring Support</h3>
+                            <p>Strategic talent acquisition and retention services for companies expanding globally across all functions.</p>
+                            <a href="#" class="service-button" onclick="showPage('hiring')">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Lead Generation">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Lead Generation</h3>
+                            <p>Data-driven lead generation strategies that deliver qualified prospects ready for conversion.</p>
+                            <a href="#" class="service-button" onclick="showPage('leads')">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="articles-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Latest Insights</h2>
+                    <p class="section-subtitle">Expert perspectives on talent acquisition, lead generation, and digital growth strategies for global enterprises</p>
+                </div>
+                
+                <div class="articles-grid">
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1552664738-75a2aa3f8747?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Remote Work">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                February 8, 2026
+                            </div>
+                            <h3>Building High-Performing Remote Teams Across Time Zones</h3>
+                            <p>Strategies for recruiting, onboarding, and retaining top talent in distributed work environments while maintaining company culture and productivity.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1522202173576-f4bb51f2e7c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Lead Generation Strategy">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                January 25, 2026
+                            </div>
+                            <h3>Advanced Lead Generation Strategies for Complex Sales Cycles</h3>
+                            <p>How to identify and engage decision-makers in enterprise accounts with multi-stakeholder buying processes using targeted, personalized approaches.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Talent Acquisition">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                January 12, 2026
+                            </div>
+                            <h3>The Future of Global Talent Acquisition in 2026</h3>
+                            <p>Emerging trends and technologies transforming how multinational companies find, attract, and retain exceptional professionals worldwide.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h2>Ready to Transform Your Business?</h2>
+                    <p>Schedule a free consultation with one of our global talent and growth experts to discuss your specific needs and how we can help you achieve your goals.</p>
+                    <button class="primary-cta" onclick="showPage('contact')">Schedule Free Consultation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- eCommerce Solutions Page -->
+    <div class="page" id="ecommerce-page">
+        <section class="hero">
+            <div class="parallax-bg" style="background-image: linear-gradient(rgba(0, 15, 30, 0.85), rgba(0, 15, 30, 0.85)), url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;"></div>
+            <div class="hero-content fade-in">
+                <h1>eCommerce Solutions for Global Growth</h1>
+                <p>Talent Bridge provides end-to-end eCommerce development and optimization services that help multinational companies expand their digital sales channels and reach customers worldwide.</p>
+                <div class="hero-cta">
+                    <button class="primary-cta" onclick="showPage('contact')">Request a Demo</button>
+                    <button class="secondary-cta" onclick="showPage('case-studies')">View Case Studies</button>
+                </div>
+            </div>
+            <div class="scroll-down" onclick="scrollToSection('ecommerce-content')">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <section class="services-section" id="ecommerce-content">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Our eCommerce Solutions</h2>
+                    <p class="section-subtitle">Comprehensive platform development and optimization services designed for global enterprises</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Platform Development">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <h3>Platform Development</h3>
+                            <p>Custom eCommerce platform development using leading technologies (Shopify, Magento, WooCommerce) tailored to your specific business requirements and global expansion goals.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1558655146-d09347e92762?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Mobile Optimization">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Mobile Optimization</h3>
+                            <p>Mobile-first design and development strategies to ensure seamless shopping experiences across all devices, increasing conversion rates and customer satisfaction.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Global Expansion">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <h3>Global Expansion</h3>
+                            <p>Multi-currency, multi-language, and region-specific customization to help you expand your eCommerce operations into new international markets with ease.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1563013544-4f1b7f2a7e8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Analytics & Optimization">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3>Analytics & Optimization</h3>
+                            <p>Advanced analytics integration and continuous optimization strategies to improve conversion rates, reduce cart abandonment, and maximize ROI.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="articles-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">eCommerce Insights</h2>
+                    <p class="section-subtitle">Expert perspectives on building successful global digital commerce operations</p>
+                </div>
+                
+                <div class="articles-grid">
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1558655146-d09347e92762?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Mobile Commerce">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                January 22, 2026
+                            </div>
+                            <h3>Winning Strategies for Mobile Commerce</h3>
+                            <p>How optimizing for mobile-first experiences can dramatically increase conversion rates and customer lifetime value in global markets.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Global Payments">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                January 5, 2026
+                            </div>
+                            <h3>Navigating Global Payment Complexity</h3>
+                            <p>Essential strategies for implementing seamless, localized payment experiences that reduce cart abandonment and build trust.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1563013544-4f1b7f2a7e8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Personalization">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                December 12, 2025
+                            </div>
+                            <h3>The Power of AI-Driven Personalization</h3>
+                            <p>Discover how advanced product recommendations and personalized experiences are driving revenue growth for leading retailers.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h2>Ready to Transform Your eCommerce Strategy?</h2>
+                    <p>Join hundreds of global brands that trust Talent Bridge for their digital commerce success.</p>
+                    <button class="primary-cta" onclick="showPage('contact')">Get a Free Consultation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Marketing Support Page -->
+    <div class="page" id="marketing-page">
+        <section class="hero">
+            <div class="parallax-bg" style="background-image: linear-gradient(rgba(0, 15, 30, 0.85), rgba(0, 15, 30, 0.85)), url('https://images.unsplash.com/photo-1552664738-75a2aa3f8747?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;"></div>
+            <div class="hero-content fade-in">
+                <h1>Full-Funnel Marketing Support</h1>
+                <p>Talent Bridge delivers comprehensive marketing solutions from lead generation to conversion optimization, helping multinational companies achieve sustainable growth across all digital channels.</p>
+                <div class="hero-cta">
+                    <button class="primary-cta" onclick="showPage('contact')">Explore Solutions</button>
+                    <button class="secondary-cta" onclick="showPage('case-studies')">View Case Studies</button>
+                </div>
+            </div>
+            <div class="scroll-down" onclick="scrollToSection('marketing-content')">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <section class="services-section" id="marketing-content">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Our Marketing Services</h2>
+                    <p class="section-subtitle">End-to-end marketing solutions designed for global enterprises seeking sustainable growth</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Digital Campaigns">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <h3>Digital Campaigns</h3>
+                            <p>Strategic campaign development and execution across all digital channels including paid search, social media, display advertising, and email marketing.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1563013544-4f1b7f2a7e8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Content Strategy">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-pen-nib"></i>
+                            </div>
+                            <h3>Content Strategy</h3>
+                            <p>Comprehensive content planning, creation, and distribution strategies that establish thought leadership and drive meaningful engagement with your target audience.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1558655146-d09347e92762?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="SEO & Organic Growth">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3>SEO & Organic Growth</h3>
+                            <p>Technical SEO audits, keyword strategy development, and content optimization to improve search rankings and drive sustainable organic traffic growth.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Performance Analytics">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Performance Analytics</h3>
+                            <p>Advanced analytics implementation and reporting to track campaign performance, optimize marketing spend, and demonstrate clear ROI across all channels.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="articles-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Marketing Insights</h2>
+                    <p class="section-subtitle">Expert perspectives on modern marketing strategies for global enterprises</p>
+                </div>
+                
+                <div class="articles-grid">
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1563013544-4f1b7f2a7e8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ABM Strategy">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                January 18, 2026
+                            </div>
+                            <h3>Account-Based Marketing at Scale</h3>
+                            <p>How leading enterprises are leveraging ABM strategies to drive revenue growth and deepen relationships with strategic accounts.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1558655146-d09347e92762?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Content Strategy">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                January 8, 2026
+                            </div>
+                            <h3>Building a Content Engine That Converts</h3>
+                            <p>Strategies for creating high-value content that attracts, engages, and converts prospects across the buyer's journey.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Marketing AI">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                December 28, 2025
+                            </div>
+                            <h3>AI Applications in Modern Marketing</h3>
+                            <p>Practical use cases for artificial intelligence that are transforming customer acquisition, engagement, and retention strategies.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h2>Transform Your Marketing Strategy Today</h2>
+                    <p>Partner with Talent Bridge to build a marketing engine that drives sustainable growth for your global business.</p>
+                    <button class="primary-cta" onclick="showPage('contact')">Schedule Strategy Session</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hiring Support Page -->
+    <div class="page" id="hiring-page">
+        <section class="hero">
+            <div class="parallax-bg" style="background-image: linear-gradient(rgba(0, 15, 30, 0.85), rgba(0, 15, 30, 0.85)), url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;"></div>
+            <div class="hero-content fade-in">
+                <h1>Strategic Hiring Support for Global Enterprises</h1>
+                <p>Talent Bridge provides comprehensive talent acquisition and retention services that help multinational companies build world-class teams across all functions and geographies.</p>
+                <div class="hero-cta">
+                    <button class="primary-cta" onclick="showPage('contact')">Find Your Next Star</button>
+                    <button class="secondary-cta" onclick="showPage('case-studies')">View Success Stories</button>
+                </div>
+            </div>
+            <div class="scroll-down" onclick="scrollToSection('hiring-content')">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <section class="services-section" id="hiring-content">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Our Hiring Solutions</h2>
+                    <p class="section-subtitle">End-to-end talent acquisition and retention services for global enterprises</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Executive Search">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Executive Search</h3>
+                            <p>Specialized recruitment services for C-suite and senior leadership positions, with a focus on cultural fit and strategic alignment.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Technical Recruitment">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3>Technical Recruitment</h3>
+                            <p>In-depth technical assessment and recruitment for engineering, data science, and IT roles across all levels of seniority.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Global Mobility">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3>Global Mobility</h3>
+                            <p>Comprehensive support for international relocations, visa processing, and cross-border employment compliance.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1552664738-75a2aa3f8747?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Talent Pipelines">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-chart-network"></i>
+                            </div>
+                            <h3>Talent Pipelines</h3>
+                            <p>Proactive talent community building and pipeline development to ensure access to top talent for critical roles.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="articles-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Talent Insights</h2>
+                    <p class="section-subtitle">Expert perspectives on building and retaining world-class teams</p>
+                </div>
+                
+                <div class="articles-grid">
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Remote Work">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                January 25, 2026
+                            </div>
+                            <h3>Building High-Performing Remote Teams</h3>
+                            <p>Strategies for recruiting, onboarding, and retaining top talent in distributed work environments across multiple time zones.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1552664738-75a2aa3f8747?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="DEI Strategy">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                January 12, 2026
+                            </div>
+                            <h3>DEI as a Competitive Advantage</h3>
+                            <p>How leading companies are leveraging diversity, equity, and inclusion to drive innovation and business performance.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Leadership Talent">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                December 20, 2025
+                            </div>
+                            <h3>Identifying Future Leaders</h3>
+                            <p>Advanced methodologies for spotting high-potential talent and developing them into tomorrow's executive leaders.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h2>Build Your Dream Team with Talent Bridge</h2>
+                    <p>Partner with us to find exceptional talent that will drive your business forward and maintain your competitive edge.</p>
+                    <button class="primary-cta" onclick="showPage('contact')">Start Your Search Today</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lead Generation Page -->
+    <div class="page" id="leads-page">
+        <section class="hero">
+            <div class="parallax-bg" style="background-image: linear-gradient(rgba(0, 15, 30, 0.85), rgba(0, 15, 30, 0.85)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;"></div>
+            <div class="hero-content fade-in">
+                <h1>High-Quality Lead Generation for Global Growth</h1>
+                <p>Talent Bridge delivers targeted lead generation services that provide multinational companies with a consistent pipeline of qualified prospects ready for conversion and business expansion.</p>
+                <div class="hero-cta">
+                    <button class="primary-cta" onclick="showPage('contact')">Generate Your Leads</button>
+                    <button class="secondary-cta" onclick="showPage('case-studies')">View Success Stories</button>
+                </div>
+            </div>
+            <div class="scroll-down" onclick="scrollToSection('leads-content')">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <section class="services-section" id="leads-content">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Our Lead Generation Services</h2>
+                    <p class="section-subtitle">Data-driven lead generation strategies designed to fill your sales pipeline with qualified prospects</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Data-Driven Targeting">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>Data-Driven Targeting</h3>
+                            <p>Advanced data analytics and AI-powered prospect identification to target companies and decision-makers most likely to convert.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Multi-Channel Outreach">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-envelope-open-text"></i>
+                            </div>
+                            <h3>Multi-Channel Outreach</h3>
+                            <p>Integrated outreach strategies across email, social media, phone, and digital advertising to maximize response rates.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1563013544-4f1b7f2a7e8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Lead Nurturing">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <h3>Lead Nurturing</h3>
+                            <p>Automated yet personalized nurturing workflows that build relationships and move prospects through the sales funnel.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card slide-up">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1558655146-d09347e92762?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Conversion Analytics">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h3>Conversion Analytics</h3>
+                            <p>Comprehensive tracking and optimization of lead sources, conversion paths, and ROI to continuously improve performance.</p>
+                            <a href="#" class="service-button">
+                                <span>Learn more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="articles-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Lead Generation Insights</h2>
+                    <p class="section-subtitle">Expert perspectives on building effective lead generation engines</p>
+                </div>
+                
+                <div class="articles-grid">
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="B2B Lead Gen">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                January 30, 2026
+                            </div>
+                            <h3>B2B Lead Generation in Complex Sales Cycles</h3>
+                            <p>Strategies for identifying and engaging decision-makers in enterprise accounts with long, multi-stakeholder buying processes.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1558655146-d09347e92762?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Lead Nurturing">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                January 15, 2026
+                            </div>
+                            <h3>Advanced Lead Nurturing Frameworks</h3>
+                            <p>How automated yet personalized nurturing workflows can dramatically improve conversion rates for marketing-qualified leads.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1563013544-4f1b7f2a7e8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Data Quality">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                December 25, 2025
+                            </div>
+                            <h3>The Critical Role of Data Hygiene</h3>
+                            <p>Why maintaining accurate, up-to-date prospect data is essential for campaign performance and sales team productivity.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h2>Start Generating High-Quality Leads Today</h2>
+                    <p>Partner with Talent Bridge to build a sustainable pipeline of qualified prospects that drive your business growth.</p>
+                    <button class="primary-cta" onclick="showPage('contact')">Get Your Custom Strategy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us Page -->
+    <div class="page" id="about-page">
+        <section class="hero">
+            <div class="parallax-bg" style="background-image: linear-gradient(rgba(0, 15, 30, 0.85), rgba(0, 15, 30, 0.85)), url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;"></div>
+            <div class="hero-content fade-in">
+                <h1>About Talent Bridge</h1>
+                <p>For over 14 years, Talent Bridge has been the trusted partner for multinational companies seeking to optimize their talent acquisition, lead generation, and digital growth strategies across global markets.</p>
+                <div class="hero-cta">
+                    <button class="primary-cta" onclick="showPage('contact')">Join Our Team</button>
+                    <button class="secondary-cta" onclick="showPage('case-studies')">View Our Impact</button>
+                </div>
+            </div>
+            <div class="scroll-down" onclick="scrollToSection('about-content')">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <section class="services-section" id="about-content">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Our Story</h2>
+                    <p class="section-subtitle">From humble beginnings to global impact - our journey of connecting talent with opportunity</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item slide-up">
+                        <div class="timeline-year">2012</div>
+                        <h3>Founding Vision</h3>
+                        <p>Talent Bridge was founded with a simple mission: to bridge the gap between exceptional talent and global opportunities through personalized, human-centered approach to recruitment and lead generation.</p>
+                    </div>
+                    <div class="timeline-item slide-up">
+                        <div class="timeline-year">2015</div>
+                        <h3>Global Expansion</h3>
+                        <p>Expanded operations to Europe and Asia-Pacific regions, establishing dedicated talent hubs in London, Singapore, and Tokyo to serve growing multinational client base.</p>
+                    </div>
+                    <div class="timeline-item slide-up">
+                        <div class="timeline-year">2018</div>
+                        <h3>Technology Integration</h3>
+                        <p>Launched proprietary talent matching platform combining AI-powered analytics with human expertise to deliver superior candidate matching and lead qualification.</p>
+                    </div>
+                    <div class="timeline-item slide-up">
+                        <div class="timeline-year">2021</div>
+                        <h3>eCommerce Division</h3>
+                        <p>Expanded service offerings to include comprehensive eCommerce development and optimization, helping clients build seamless digital shopping experiences.</p>
+                    </div>
+                    <div class="timeline-item slide-up">
+                        <div class="timeline-year">2026</div>
+                        <h3>Global Leadership</h3>
+                        <p>Serving over 500 clients across 30+ countries with a team of 200+ specialized talent ambassadors, generating billions in revenue for our partners.</p>
+                    </div>
+                </div>
+                
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <div class="stat-number">14+</div>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Companies Served</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">94%</div>
+                        <div class="stat-label">Client Retention Rate</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="articles-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Company Insights</h2>
+                    <p class="section-subtitle">Perspectives on our culture, values, and approach to business</p>
+                </div>
+                
+                <div class="articles-grid">
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Company Culture">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                February 2, 2026
+                            </div>
+                            <h3>Cultivating a Culture of Excellence</h3>
+                            <p>How we've built an organization where talent specialists thrive, develop expertise, and deliver exceptional results for clients.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1552664738-75a2aa3f8747?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Global Impact">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                January 20, 2026
+                            </div>
+                            <h3>Making a Difference Across Borders</h3>
+                            <p>Our commitment to social responsibility and creating positive impact in communities where we operate worldwide.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Leadership">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                January 5, 2026
+                            </div>
+                            <h3>Leadership in Times of Change</h3>
+                            <p>How our executive team navigates industry disruptions and guides the company through periods of rapid transformation.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h2>Join Our Mission</h2>
+                    <p>Whether you're looking to advance your career or partner with us to grow your business, we'd love to connect with you.</p>
+                    <button class="primary-cta" onclick="showPage('contact')">Contact Us Today</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resources Page -->
+    <div class="page" id="resources-page">
+        <section class="hero">
+            <div class="parallax-bg" style="background-image: linear-gradient(rgba(0, 15, 30, 0.85), rgba(0, 15, 30, 0.85)), url('https://images.unsplash.com/photo-1552664738-75a2aa3f8747?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;"></div>
+            <div class="hero-content fade-in">
+                <h1>Resources & Insights</h1>
+                <p>Access valuable content, research, and tools to help you navigate global talent acquisition, lead generation, and digital growth strategies.</p>
+                <div class="hero-cta">
+                    <button class="primary-cta" onclick="showPage('contact')">Request Custom Research</button>
+                    <button class="secondary-cta">Download Resources</button>
+                </div>
+            </div>
+            <div class="scroll-down" onclick="scrollToSection('resources-content')">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <section class="services-section" id="resources-content">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Resource Library</h2>
+                    <p class="section-subtitle">Expert content to help you stay ahead in global talent acquisition and business growth</p>
+                </div>
+                
+                <div class="resources-grid">
+                    <div class="resource-card slide-up">
+                        <div class="resource-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>Industry Reports</h3>
+                        <p>Comprehensive research and analysis on global talent markets, lead generation trends, and digital commerce evolution.</p>
+                        <a href="#" class="service-button">
+                            <span>View Reports</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="resource-card slide-up">
+                        <div class="resource-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Webinars</h3>
+                        <p>Expert-led sessions on emerging trends, best practices, and innovative strategies for global business growth.</p>
+                        <a href="#" class="service-button">
+                            <span>View Webinars</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="resource-card slide-up">
+                        <div class="resource-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Tools & Templates</h3>
+                        <p>Practical resources including assessment templates, campaign frameworks, and optimization checklists.</p>
+                        <a href="#" class="service-button">
+                            <span>Browse Tools</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="webinar-card">
+                    <div class="webinar-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>No Current Webinars Available</h3>
+                    <p>We don't currently have any scheduled webinars, but we're constantly developing new content. Check back soon for upcoming events or contact us to request a custom webinar for your organization.</p>
+                    <button class="primary-cta" onclick="showPage('contact')">Request a Custom Webinar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="articles-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Featured Content</h2>
+                    <p class="section-subtitle">Must-read articles and insights from our expert team</p>
+                </div>
+                
+                <div class="articles-grid">
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1552664738-75a2aa3f8747?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Future of Work">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                February 10, 2026
+                            </div>
+                            <h3>The Future of Global Talent Acquisition</h3>
+                            <p>Discover how AI and human expertise are transforming the way multinational companies find and retain top talent in competitive markets.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1563013544-4f1b7f2a7e8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Lead Generation">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                January 15, 2026
+                            </div>
+                            <h3>Quality Over Quantity in Lead Generation</h3>
+                            <p>Learn why focusing on high-intent, qualified leads delivers better ROI than volume-based approaches for enterprise growth.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="article-card slide-up">
+                        <div class="article-image">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="eCommerce Trends">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                December 18, 2025
+                            </div>
+                            <h3>eCommerce Trends Reshaping Global Retail</h3>
+                            <p>Explore the latest innovations in digital commerce that are helping brands deliver seamless shopping experiences across borders.</p>
+                            <a href="#" class="service-button">
+                                <span>Read more</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h2>Stay Ahead with Talent Bridge Insights</h2>
+                    <p>Subscribe to our newsletter for exclusive content, industry reports, and expert perspectives delivered straight to your inbox.</p>
+                    <button class="primary-cta">Subscribe to Newsletter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="color: white; margin-bottom: 1.8rem; display: inline-flex; align-items: center; gap: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.5rem;">
+                        <div class="logo-icon">
+                            <i class="fas fa-bridge"></i>
+                        </div>
+                        Talent Bridge
+                    </a>
+                    <p style="color: #ccc; margin-bottom: 1.8rem; line-height: 1.7;">Empowering global enterprises with talent solutions and growth strategies since 2012. Partner with us to transform your business.</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background: rgba(255,255,255,0.1); color: white; transition: var(--transition);">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background: rgba(255,255,255,0.1); color: white; transition: var(--transition);">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background: rgba(255,255,255,0.1); color: white; transition: var(--transition);">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background: rgba(255,255,255,0.1); color: white; transition: var(--transition);">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showPage('ecommerce')">eCommerce Solutions</a></li>
+                        <li><a href="#" onclick="showPage('marketing')">Marketing Support</a></li>
+                        <li><a href="#" onclick="showPage('hiring')">Hiring Support</a></li>
+                        <li><a href="#" onclick="showPage('leads')">Lead Generation</a></li>
+                        <li><a href="#">Executive Search</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showPage('resources')">Resource Library</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Industry Reports</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Career Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                123 Global Avenue, Suite 100<br>
+                                New York, NY 10001<br>
+                                United States
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <a href="tel:+12792083677" style="color: #ccc; text-decoration: none;">+1 (279) 208-3677</a><br>
+                                Mon-Fri: 9AM - 6PM EST
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <a href="mailto:info@talentbridge.com" style="color: #ccc; text-decoration: none;">info@talentbridge.com</a><br>
+                                <a href="mailto:support@talentbridge.com" style="color: #ccc; text-decoration: none;">support@talentbridge.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Talent Bridge. All rights reserved. | Global Talent Solutions for the Modern Enterprise
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Parallax effect for hero background
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxBg = document.querySelector('.parallax-bg');
+            
+            if (parallaxBg) {
+                parallaxBg.style.transform = `translate3d(0, ${scrolled * 0.5}px, 0)`;
+            }
+            
+            // Header scroll effect
+            const header = document.getElementById('header');
+            if (scrolled > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Page navigation function
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId + '-page').classList.add('active');
+            
+            // Update navigation links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Find and activate the correct links
+            document.querySelectorAll(`.nav-links a[onclick*="${pageId}"]`).forEach(link => {
+                link.classList.add('active');
+            });
+            
+            // Special handling for home page
+            if (pageId === 'home') {
+                document.querySelector('.nav-links a[onclick*="home"]').classList.add('active');
+            }
+            
+            // Update URL hash for direct linking
+            window.history.pushState({}, '', `#${pageId}`);
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Handle URL hash changes
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash + '-page')) {
+                showPage(hash);
+            }
+        });
+
+        // Mobile Menu Toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            const navLinks = document.getElementById('navLinks');
+            document.body.classList.toggle('mobile-nav-active');
+            this.innerHTML = document.body.classList.contains('mobile-nav-active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Scroll to section function
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                window.scrollTo({
+                    top: section.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Initialize page based on URL hash
+        document.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash + '-page')) {
+                showPage(hash);
+            } else {
+                // Default to home page
+                showPage('home');
+            }
+            
+            // Initialize animations
+            setTimeout(() => {
+                document.querySelectorAll('.slide-up').forEach((el, index) => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(30px)';
+                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, 300 + index * 150);
+                });
+            }, 300);
+        });
+
+        // Add scroll animation for elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.style.opacity = 0;
+                el.style.transition = 'opacity 0.8s ease';
+                observer.observe(el);
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                if (document.getElementById(targetId + '-page')) {
+                    showPage(targetId);
+                } else {
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
